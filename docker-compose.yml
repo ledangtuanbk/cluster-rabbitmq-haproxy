@@ -2,7 +2,8 @@ version: '2'
 
 services:
  rabbitmq-node-1:
-  image: rabbitmq:3-management
+  image: rabbitmq:3.8.16-management
+  restart: always
   container_name: rabbitmq-node-1
   hostname: rabbitmq-node-1
   ports:
@@ -14,10 +15,11 @@ services:
   environment:
    - RABBITMQ_ERLANG_COOKIE=cluster_cookie
    - RABBITMQ_DEFAULT_USER=admin
-   - RABBITMQ_DEFAULT_PASS=admin 
+   - RABBITMQ_DEFAULT_PASS=admin@123
 
  rabbitmq-node-2:
-  image: rabbitmq:3-management
+  image: rabbitmq:3.8.16-management
+  restart: always
   container_name: rabbitmq-node-2
   hostname: rabbitmq-node-2
   ports:
@@ -29,10 +31,11 @@ services:
   environment:
    - RABBITMQ_ERLANG_COOKIE=cluster_cookie
    - RABBITMQ_DEFAULT_USER=admin
-   - RABBITMQ_DEFAULT_PASS=admin
+   - RABBITMQ_DEFAULT_PASS=admin@123
 
  rabbitmq-node-3:
-  image: rabbitmq:3-management
+  image: rabbitmq:3.8.16-management
+  restart: always
   container_name: rabbitmq-node-3
   hostname: rabbitmq-node-3
   ports:
@@ -44,10 +47,11 @@ services:
   environment:
    - RABBITMQ_ERLANG_COOKIE=cluster_cookie
    - RABBITMQ_DEFAULT_USER=admin
-   - RABBITMQ_DEFAULT_PASS=admin
+   - RABBITMQ_DEFAULT_PASS=admin@123
 
  haproxy:
   image: haproxy-server:latest
+  restart: always
   container_name: haproxy
   hostname: haproxy
   ports:
